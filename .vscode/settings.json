@@ -43,6 +43,7 @@
         "typeinfo": "cpp",
         "ctime": "cpp",
         "optional": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "list": "cpp"
     }
 }
