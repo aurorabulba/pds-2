@@ -17,6 +17,14 @@ class Classe{
             Classe::numObjetos++;
         }
 
+        Classe(const Classe& other) {
+        //O construtor de cópia em C++ é uma função especial que define como um
+        //objeto da classe será copiado para criar outro.
+        //Se você não definir um, o compilador cria um implícito, que copia membro a membro (shallow copy).
+           this->id = other.id;
+            Classe::numObjetos++;
+        }
+
         ~Classe(){
             Classe::numObjetos--;
         }
@@ -28,7 +36,7 @@ class Classe{
         }
 
         void getNumObjetos(){
-            std::cout << Classe::numObjetos;
+            std::cout << Classe::numObjetos << std::endl;
         }
 
         const void* getEndereco(){
@@ -59,12 +67,9 @@ int main(){
 
             /*A: adiciona um novo objeto com id automático no final da lista. 
             Deve ser impresso o id e o endereço de memória do objeto criado.*/
-            if (lista.empty()){
-                /* code */
-            }
-            
             lista.push_back(Classe());
             lista.back().imprimir();
+
             break;
 
         case 'C':
@@ -74,8 +79,8 @@ int main(){
             std::cin >> id;
 
             if(id < 0){
-                lista.push_back(Classe(id));
-                lista.back().imprimir();
+                lista.push_front(Classe(id));
+                lista.front().imprimir();
             } else{
                 std::cout << "ERRO" << std::endl;
             }
@@ -87,9 +92,12 @@ int main(){
             /* R: remove (e deleta) um objeto da frente da lista. 
             Deve ser impresso o id e o endereço endereço de memória do objeto removido. 
             Caso a lista esteja vazia deve ser impresso "ERRO" */
-            lista.front().imprimir();
-            lista.front().~Classe();
-            lista.pop_front();
+            if(lista.empty()){
+                std::cout<< "ERRO" << std:: endl;
+            }else {
+                lista.front().imprimir();
+                lista.pop_front();
+            }
             break;
 
         case 'N':
@@ -104,8 +112,9 @@ int main(){
             Se i for um valor inválido (menor que 1 ou maior que o número de elementos) seu programa deverá imprimir "ERRO"*/
             std::cin >> i;
 
-            if(i > 1 && i < lista.size()){
-                std::advance(it, i);
+            if(i >= 1 && i <= it->numObjetos){
+                it = lista.begin();
+                std::advance(it, i - 1);
                 it->imprimir();
             } else{
                 std::cout << "ERRO" << std::endl;
@@ -125,9 +134,7 @@ int main(){
 
     }while(opcao != 'E');
 
-        for (it = lista.begin(); it != lista.end(); ++it) {
-            it->~Classe();
-        }
+    lista.clear();
 
     return 0;
 }
