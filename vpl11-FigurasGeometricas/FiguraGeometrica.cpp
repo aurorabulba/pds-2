@@ -1,7 +1,9 @@
 #define _USE_MATH_DEFINES
 #include <iostream>
 #include <string>
+#include <vector>
 #include <math.h>
+#include <iomanip>
 
 class Ponto{
     private: 
@@ -55,14 +57,14 @@ class Triangulo : public FiguraGeometrica{
         int base, altura;
     public: 
         Triangulo(int x, int y, int b, int h) : FiguraGeometrica(x,y), base(b), altura(h){ }
-
+ 
         void desenha() override{
             FiguraGeometrica::desenha();
             std::cout << "TRIANGULO" << std::endl;
         }
 
         float calcularArea(){
-            return (this->base * this->altura);
+            return ((this->base * this->altura)/2);
         }
 };
 
@@ -103,6 +105,43 @@ class Circulo : public FiguraGeometrica{
 };
 
 int main(){
+    std::vector<FiguraGeometrica*> formas;
+    char opcao;
+    int c1, c2, l1, l2, raio, base, altura;
+    float area;
+
+    do{
+        std::cin >> opcao;
+    switch (opcao){
+    case 'R':
+        std::cin >> c1 >> c2 >> l1 >> l2;
+        formas.push_back(new Retangulo(c1, c2, l1, l2));
+        break;
+    case 'C':
+        std::cin >> c1 >> c2 >> raio;
+        formas.push_back(new Circulo(c1, c2, raio));
+        break;
+    case 'T':
+        std::cin >> c1 >> c2 >> base >> altura;
+        formas.push_back(new Triangulo(c1, c2, base, altura));
+        break;
+    case 'D':
+        for(auto f : formas){
+            f->desenha();
+        }
+        break;
+    case 'A':
+        area = 0.00;
+        for(auto f : formas){
+            area += f->calcularArea(); 
+        }
+        std::cout << std::fixed<< std::setprecision(2) << area << std::endl;
+        break;
+    case 'E':
+        break;
+    }
+
+    }while(opcao != 'E');
 
     return 0;
 }
