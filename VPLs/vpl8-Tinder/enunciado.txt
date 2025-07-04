@@ -1,0 +1,5 @@
+O objetivo desse projeto é praticar os conceitos de Tipos Abstratos de Dados (TAD)
+e Modularização utilizando CLASSES, ainda de forma básica, sem encapsulamento, por
+isso, todos os membros da nossa classe serão públicos.
+
+Você deve implementar o programa Tinder, que fizemos juntos em sala de aula.
