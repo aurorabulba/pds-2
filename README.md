@@ -23,41 +23,6 @@
   </div>
 
   <div class="section">
-    <h2>Avaliação</h2>
-    <table class="avaliacao-table">
-      <tr>
-        <th>Item</th>
-        <th>Pontuação</th>
-      </tr>
-      <tr>
-        <td>3 Provas Teóricas (3 × 15 pts)</td>
-        <td>45 pontos</td>
-      </tr>
-      <tr>
-        <td>Projeto Final</td>
-        <td>25 pontos</td>
-      </tr>
-      <tr>
-        <td>Atividades Práticas (~1 exercício por semana)</td>
-        <td>28 pontos</td>
-      </tr>
-      <tr>
-        <td>Participação</td>
-        <td>2 pontos</td>
-      </tr>
-    </table>
-  </div>
-
-  <div class="section">
-    <h2>Projeto Final</h2>
-    <ul>
-      <li><strong>Tema:</strong> escolha do grupo (há uma lista de sugestões disponível)</li>
-      <li><strong>Grupos:</strong> 3 ou 4 alunos</li>
-      <li><strong>Código:</strong> repositório privado no GitHub</li>
-    </ul>
-  </div>
-
-  <div class="section">
     <h2>Ferramentas Utilizadas</h2>
     <ul>
       <li>gcc 7.5.0 — compilador</li>
